@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APDSC SGT Topic Test — Science & Technology, Days & Sports</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--ink:#1b2133;--mute:#5a6479;--line:#dbe0ec;--brand:#1f4fd8;--brand2:#e8eefc;--ok:#0b7a43;--okbg:#e3f6ec;--bad:#b3261e;--badbg:#fdeceb;--warn:#8a5a00;--warnbg:#fff4d6}
+@media (prefers-color-scheme:dark){:root{--bg:#0f121b;--card:#171b27;--ink:#e8ebf4;--mute:#9aa3b8;--line:#2a3042;--brand:#7ea2ff;--brand2:#1c2540;--ok:#4bd68a;--okbg:#10301f;--bad:#ff8f86;--badbg:#3a1815;--warn:#ffd36b;--warnbg:#3a2f10}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Telugu","Nirmala UI",Gautami,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,select{-webkit-user-select:text;user-select:text}
+header{padding:14px 16px;background:var(--brand);color:#fff}
+@media (prefers-color-scheme:dark){header{background:#1c2c5c}}
+header h1{margin:0 0 3px;font-size:18px;line-height:1.3}
+header .credit{font-size:13px;font-weight:700;letter-spacing:.3px}
+header .sub{font-size:12px;opacity:.92}
+.wrap{max-width:820px;margin:0 auto;padding:12px 14px 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+label{display:block;font-size:14px;font-weight:600;margin:10px 0 4px}
+input[type=text],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.radios{display:flex;flex-wrap:wrap;gap:8px}
+.radios label{display:flex;align-items:center;gap:6px;margin:0;font-weight:500;padding:7px 12px;border:1px solid var(--line);border-radius:999px}
+button{font:inherit}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:11px 20px;font-size:16px;font-weight:700;cursor:pointer}
+@media (prefers-color-scheme:dark){.btn{background:#3b63d9}}
+.btn.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.55}
+.note{font-size:13px;color:var(--mute)}
+.msg{margin-top:10px;padding:10px 12px;border-radius:8px;font-size:14px;display:none}
+.msg.err{display:block;background:var(--badbg);color:var(--bad)}
+.msg.info{display:block;background:var(--brand2);color:var(--ink)}
+ul.inst{margin:6px 0 0 18px;padding:0;font-size:14px}
+.bar{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line);padding:8px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bar .t{font-weight:800;font-variant-numeric:tabular-nums;font-size:16px;min-width:56px}
+.bar .t.low{color:var(--bad)}
+.bar .p{font-size:13px;color:var(--mute)}
+.bar .lg{display:flex;gap:4px}
+.bar .lg button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:4px 9px;font-size:13px}
+.bar .lg button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.bar .sp{flex:1}
+.bar .sub{background:var(--ok);color:#fff;border:0;border-radius:9px;padding:8px 16px;font-weight:800;font-size:15px}
+@media (prefers-color-scheme:dark){.bar .sub{background:#1f8f58}}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.q .meta{font-size:12px;color:var(--mute);margin-bottom:6px;display:flex;justify-content:space-between;gap:8px}
+.q .qt{font-weight:700;margin:0 0 4px}
+.q .qt.te{font-weight:600;color:var(--ink)}
+.opts{margin-top:10px;display:grid;gap:8px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);cursor:pointer}
+.opt .k{font-weight:800;color:var(--mute);min-width:20px}
+.opt .tx{flex:1}
+.opt .tx .te{display:block;color:var(--mute);font-size:14px}
+.opt .ic{font-weight:900;min-width:16px;text-align:right}
+.q.locked .opt{cursor:default}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:var(--ink)}
+.opt.ok .ic{color:var(--ok)}
+.opt.bad{background:var(--badbg);border-color:var(--bad)}
+.opt.bad .ic{color:var(--bad)}
+.fb{margin-top:8px;font-size:13px;font-weight:700}
+.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}.fb.skip{color:var(--warn)}
+.score{font-size:34px;font-weight:900;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:10px}
+.stat{background:var(--brand2);border-radius:10px;padding:8px 10px;font-size:13px}
+.stat b{display:block;font-size:18px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--mute);font-weight:700;font-size:12px}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+#modal .box{background:var(--card);border-radius:14px;padding:18px;max-width:380px;width:100%}
+#modal .row{display:flex;gap:10px;margin-top:14px;justify-content:flex-end}
+footer{text-align:center;padding:16px;font-size:13px;color:var(--mute);border-top:1px solid var(--line)}
+footer strong{color:var(--ink)}
+.hide{display:none!important}
+@media print{body{display:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>APDSC SGT Topic Test — Science & Technology, Days & Sports</h1>
+  <div class="credit">C. RASOOL BAVAJI, S.A.(P.S.), ZPHS, MADANAPALLE</div>
+  <div class="sub">https://tenthquiz.blogspot.com • Test ID: SGT-GK-T05</div>
+</header>
+
+<div id="start" class="wrap">
+  <div class="card">
+    <label for="nm">Your name / మీ పేరు *</label>
+    <input id="nm" type="text" maxlength="40" autocomplete="off" placeholder="Full name">
+    <label for="ds">District / జిల్లా *</label>
+    <select id="ds"></select>
+    <label>Language / భాష</label>
+    <div class="radios" id="langPick">
+      <label><input type="radio" name="lg" value="both" checked> English + తెలుగు</label>
+      <label><input type="radio" name="lg" value="en"> English</label>
+      <label><input type="radio" name="lg" value="te"> తెలుగు</label>
+    </div>
+    <div id="smsg" class="msg"></div>
+    <p style="margin:14px 0 0"><button class="btn" id="goBtn">Start Test</button></p>
+  </div>
+  <div class="card">
+    <b>Instructions</b>
+    <ul class="inst">
+      <li>18 questions • 15 minutes • no negative marking.</li>
+      <li>Tap an option: <b style="color:var(--ok)">green ✓</b> = correct, <b style="color:var(--bad)">red ✗</b> = wrong (the correct answer is then shown in green).</li>
+      <li>An answer cannot be changed after you tap. Use the <b>Submit</b> button at the top when you finish.</li>
+      <li>You can attempt this test as many times as you like. Your best score is shown on the leaderboard. The timer continues if you refresh the page.</li>
+    </ul>
+  </div>
+</div>
+
+<div id="test" class="hide">
+  <div class="bar">
+    <span class="t" id="tm">--:--</span>
+    <span class="p" id="pg">0/0</span>
+    <span class="lg" id="lgBar"><button data-l="both">EN+తె</button><button data-l="en">EN</button><button data-l="te">తె</button></span>
+    <span class="sp"></span>
+    <button class="sub" id="subBtn">Submit</button>
+  </div>
+  <div class="wrap">
+    <div id="result" class="hide"></div>
+    <div id="qs"></div>
+  </div>
+</div>
+
+<footer>Prepared by <strong>C. RASOOL BAVAJI, S.A.(P.S.), ZPHS, MADANAPALLE</strong><br>https://tenthquiz.blogspot.com</footer>
+
+<div id="modal"><div class="box"><div id="mtxt"></div><div class="row"><button class="btn alt" id="mNo">Cancel</button><button class="btn" id="mYes">Submit</button></div></div></div>
+
+<script>
+
+(function(){
+  function ok(t){ return t && (t.tagName==='INPUT'||t.tagName==='SELECT'||t.tagName==='TEXTAREA'); }
+  var stop=function(e){ e.preventDefault(); return false; };
+  document.addEventListener('contextmenu', stop);
+  document.addEventListener('dragstart', stop);
+  document.addEventListener('selectstart', function(e){ if(!ok(e.target)) e.preventDefault(); });
+  document.addEventListener('copy', function(e){ if(!ok(e.target)) e.preventDefault(); });
+  document.addEventListener('cut', function(e){ if(!ok(e.target)) e.preventDefault(); });
+  document.addEventListener('keydown', function(e){
+    var k=(e.key||'').toLowerCase(), c=e.ctrlKey||e.metaKey;
+    if(e.keyCode===123 || e.key==='F12'){ e.preventDefault(); return; }
+    if(c && ['u','s','p','c','a','x'].indexOf(k)>=0 && !ok(e.target)){ e.preventDefault(); return; }
+    if(c && e.shiftKey && ['i','j','c','k'].indexOf(k)>=0){ e.preventDefault(); return; }
+  });
+})();
+
+</script>
+<script>
+(function(){
+"use strict";
+var CFG = {"TEST_ID": "SGT-GK-T05", "TITLE": "APDSC SGT Topic Test — Science & Technology, Days & Sports", "DURATION_MIN": 15, "SCRIPT_URL": "__SCRIPT_URL__", "START_AT": "", "END_AT": "", "CREDIT": "C. RASOOL BAVAJI, S.A.(P.S.), ZPHS, MADANAPALLE"};
+var Q;
+try{ Q = JSON.parse(new TextDecoder("utf-8").decode(Uint8Array.from(atob("W3siaWQiOiAiU0dULUIwMy0wOTEiLCAicGFydCI6ICJHSyIsICJ0b3BpYyI6ICJTY2llbmNlICYgVGVjaG5vbG9neSIsICJlbiI6IHsicSI6ICJJbmRpYSdzIGZpcnN0IGRlZGljYXRlZCBzb2xhciBtaXNzaW9uLCBBZGl0eWEtTDEsIHN0dWRpZXMgdGhlOiIsICJvIjogWyJTdW4iLCAiTW9vbiIsICJWZW51cyIsICJNYXJzIl19LCAidGUiOiB7InEiOiAi4LCt4LC+4LCw4LCk4LCm4LGH4LC2IOCwruCxiuCwpuCwn+CwvyDgsLjgsYzgsLAg4LCu4LC/4LC34LCo4LGNIOCwhuCwpuCwv+CwpOCxjeCwry3gsI7gsLLgsY0xIOCwpuCxh+CwqOCwv+CwqOCwvyDgsIXgsKfgsY3gsK/gsK/gsKjgsIIg4LCa4LGH4LC44LGN4LCk4LGB4LCC4LCm4LC/PyIsICJvIjogWyLgsLjgsYLgsLDgsY3gsK/gsYHgsKHgsYEiLCAi4LCa4LCC4LCm4LGN4LCw4LGB4LCh4LGBIiwgIuCwtuCxgeCwleCxjeCwsOCxgeCwoeCxgSIsICLgsIXgsILgsJfgsL7gsLDgsJXgsYHgsKHgsYEiXX0sICJhIjogMH0sIHsiaWQiOiAiU0dULUIwMy0wOTgiLCAicGFydCI6ICJHSyIsICJ0b3BpYyI6ICJJbXBvcnRhbnQgRGF5cyIsICJlbiI6IHsicSI6ICJJbnRlcm5hdGlvbmFsIExpdGVyYWN5IERheSBpcyBvYnNlcnZlZCBvbjoiLCAibyI6IFsiMjEgSnVuZSIsICI4IFNlcHRlbWJlciIsICIyNiBOb3ZlbWJlciIsICI1IEp1bmUiXX0sICJ0ZSI6IHsicSI6ICLgsIXgsILgsKTgsLDgsY3gsJzgsL7gsKTgsYDgsK8g4LCF4LCV4LGN4LC34LCw4LC+4LC44LGN4LCv4LCkIOCwpuCwv+CwqOCxi+CwpOCxjeCwuOCwteCwgiDgsI7gsKrgsY3gsKrgsYHgsKHgsYE/IiwgIm8iOiBbIuCwnOCxguCwqOCxjSAyMSIsICLgsLjgsYbgsKrgsY3gsJ/gsYbgsILgsKzgsLDgsYEgOCIsICLgsKjgsLXgsILgsKzgsLDgsYEgMjYiLCAi4LCc4LGC4LCo4LGNIDUiXX0sICJhIjogMX0sIHsiaWQiOiAiU0dULUIwMy0xMDQiLCAicGFydCI6ICJHSyIsICJ0b3BpYyI6ICJTcG9ydHMiLCAiZW4iOiB7InEiOiAiTmVlcmFqIENob3ByYSB3b24gSW5kaWEncyBmaXJzdCBPbHltcGljIGF0aGxldGljcyBnb2xkIG1lZGFsIGluIHRoZSBfX18gZXZlbnQgYXQgVG9reW8gMjAyMC4iLCAibyI6IFsiRGlzY3VzIHRocm93IiwgIkxvbmcganVtcCIsICIxMDAgbSIsICJKYXZlbGluIHRocm93Il19LCAidGUiOiB7InEiOiAi4LCf4LGL4LCV4LGN4LCv4LGLIDIwMjDgsLLgsYsg4LCt4LC+4LCw4LCk4LGN4oCM4LCV4LGBIOCwruCxiuCwpuCwn+CwvyDgsIXgsKXgsY3gsLLgsYbgsJ/gsL/gsJXgsY3gsLjgsY0g4LCS4LCy4LC/4LCC4LCq4LC/4LCV4LGNIOCwuOCxjeCwteCwsOCxjeCwo+CwgiDgsKTgsYbgsJrgsY3gsJrgsL/gsKgg4LCo4LGA4LCw4LCc4LGNIOCwmuCxi+CwquCxjeCwsOCwviDgsIjgsLXgsYbgsILgsJ/gsY06IiwgIm8iOiBbIuCwoeCwv+CwuOCxjeCwleCwuOCxjSDgsKTgsY3gsLDgsYsiLCAi4LCy4LC+4LCC4LCX4LGNIOCwnOCwguCwquCxjSIsICIxMDAg4LCu4LGA4LCf4LCw4LGN4LCy4LGBIiwgIuCwnOCwvuCwteCxhuCwsuCwv+CwqOCxjSDgsKTgsY3gsLDgsYsiXX0sICJhIjogM30sIHsiaWQiOiAiU0dULUIwMy0wODkiLCAicGFydCI6ICJHSyIsICJ0b3BpYyI6ICJTY2llbmNlICYgVGVjaG5vbG9neSIsICJlbiI6IHsicSI6ICJUaGUgJ01pc3NpbGUgTWFuIG9mIEluZGlhJyBpczoiLCAibyI6IFsiVmlrcmFtIFNhcmFiaGFpIiwgIkhvbWkgSi4gQmhhYmhhIiwgIkEuUC5KLiBBYmR1bCBLYWxhbSIsICJLLiBTaXZhbiJdfSwgInRlIjogeyJxIjogIifgsK3gsL7gsLDgsKQg4LCV4LGN4LC34LC/4LCq4LCj4LC/IOCwquCxgeCwsOCxgeCwt+CxgeCwoeCxgScgKE1pc3NpbGUgTWFuKSDgsI7gsLXgsLDgsYE/IiwgIm8iOiBbIuCwteCwv+CwleCxjeCwsOCwruCxjSDgsLjgsL7gsLDgsL7gsK3gsL7gsK/gsY0iLCAi4LC54LGL4LCu4LGAIOCwnOCxhi4g4LCt4LC+4LCt4LC+IiwgIuCwji7gsKrgsL8u4LCc4LGGLiDgsIXgsKzgsY3gsKbgsYHgsLLgsY0g4LCV4LCy4LC+4LCCIiwgIuCwleCxhi4g4LC24LC/4LC14LCo4LGNIl19LCAiYSI6IDJ9LCB7ImlkIjogIlNHVC1CMDMtMTAzIiwgInBhcnQiOiAiR0siLCAidG9waWMiOiAiU3BvcnRzIiwgImVuIjogeyJxIjogIlRoZSAyMDI4IFN1bW1lciBPbHltcGljcyB3aWxsIGJlIGhvc3RlZCBieToiLCAibyI6IFsiQnJpc2JhbmUiLCAiVG9reW8iLCAiUGFyaXMiLCAiTG9zIEFuZ2VsZXMiXX0sICJ0ZSI6IHsicSI6ICIyMDI4IOCwteCxh+CwuOCwteCwvyDgsJLgsLLgsL/gsILgsKrgsL/gsJXgsY3gsLjgsY3igIzgsJXgsYEg4LCG4LCk4LC/4LCl4LGN4LCv4LCu4LC/4LCa4LGN4LCa4LGHIOCwqOCwl+CwsOCwgjoiLCAibyI6IFsi4LCs4LGN4LCw4LC/4LC44LGN4LCs4LGH4LCo4LGNIiwgIuCwn+Cxi+CwleCxjeCwr+CxiyIsICLgsKrgsL7gsLDgsL/gsLjgsY0iLCAi4LCy4LC+4LC44LGNIOCwj+CwguCwnOCxhuCwsuCxhuCwuOCxjSJdfSwgImEiOiAzfSwgeyJpZCI6ICJTR1QtQjAzLTA5OSIsICJwYXJ0IjogIkdLIiwgInRvcGljIjogIkltcG9ydGFudCBEYXlzIiwgImVuIjogeyJxIjogIkNvbnN0aXR1dGlvbiBEYXkgKFNhbXZpZGhhbiBEaXdhcykgaXMgb2JzZXJ2ZWQgb246IiwgIm8iOiBbIjE1IEF1Z3VzdCIsICIyIE9jdG9iZXIiLCAiMjYgSmFudWFyeSIsICIyNiBOb3ZlbWJlciJdfSwgInRlIjogeyJxIjogIuCwsOCwvuCwnOCxjeCwr+CwvuCwguCwlyDgsKbgsL/gsKjgsYvgsKTgsY3gsLjgsLXgsIIgKOCwuOCwguCwteCwv+Cwp+CwvuCwqOCxjSDgsKbgsL/gsLXgsLjgsY0pIOCwjuCwquCxjeCwquCxgeCwoeCxgT8iLCAibyI6IFsi4LCG4LCX4LC44LGN4LCf4LGBIDE1IiwgIuCwheCwleCxjeCwn+Cxi+CwrOCwsOCxgSAyIiwgIuCwnOCwqOCwteCwsOCwvyAyNiIsICLgsKjgsLXgsILgsKzgsLDgsYEgMjYiXX0sICJhIjogM30sIHsiaWQiOiAiU0dULUIwMy0wOTMiLCAicGFydCI6ICJHSyIsICJ0b3BpYyI6ICJTY2llbmNlICYgVGVjaG5vbG9neSIsICJlbiI6IHsicSI6ICJHYWdhbnlhYW4gaXMgSW5kaWEncyBwcm9ncmFtbWUgZm9yOiIsICJvIjogWyJXZWF0aGVyIHNhdGVsbGl0ZXMgb25seSIsICJMdW5hciBzYW1wbGUgcmV0dXJuIiwgIk1hcnMgb3JiaXRlciIsICJIdW1hbiBzcGFjZWZsaWdodCJdfSwgInRlIjogeyJxIjogIuCwl+Cwl+CwqOCwr+CwvuCwqOCxjSDgsK3gsL7gsLDgsKTgsKbgsYfgsLYg4LCm4LGH4LCo4LC/4LCV4LC/IOCwuOCwguCwrOCwguCwp+Cwv+CwguCwmuCwv+CwqCDgsJXgsL7gsLDgsY3gsK/gsJXgsY3gsLDgsK7gsII/IiwgIm8iOiBbIuCwteCwvuCwpOCwvuCwteCwsOCwoyDgsIngsKrgsJfgsY3gsLDgsLngsL7gsLLgsYEg4LCu4LC+4LCk4LGN4LCw4LCu4LGHIiwgIuCwmuCwguCwpuCxjeCwsOCxgeCwqOCwvyDgsKjgsK7gsYLgsKjgsL7gsLIg4LC44LGH4LCV4LCw4LCjIiwgIuCwheCwguCwl+CwvuCwsOCwlSDgsJXgsJXgsY3gsLfgsY3gsK8g4LCo4LGM4LCVIiwgIuCwruCwvuCwqOCwtSDgsLjgsLngsL/gsKQg4LCF4LCC4LCk4LCw4LC/4LCV4LGN4LC3IOCwr+CwvuCwpOCxjeCwsCJdfSwgImEiOiAzfSwgeyJpZCI6ICJTR1QtQjAzLTA4OCIsICJwYXJ0IjogIkdLIiwgInRvcGljIjogIlNjaWVuY2UgJiBUZWNobm9sb2d5IiwgImVuIjogeyJxIjogIlRoZSAnRmF0aGVyIG9mIHRoZSBJbmRpYW4gc3BhY2UgcHJvZ3JhbW1lJyBpczoiLCAibyI6IFsiSG9taSBKLiBCaGFiaGEiLCAiU2F0aXNoIERoYXdhbiIsICJDLlYuIFJhbWFuIiwgIlZpa3JhbSBTYXJhYmhhaSJdfSwgInRlIjogeyJxIjogIifgsK3gsL7gsLDgsKQg4LCF4LCC4LCk4LCw4LC/4LCV4LGN4LC3IOCwleCwvuCwsOCxjeCwr+CwleCxjeCwsOCwriDgsKrgsL/gsKTgsL7gsK7gsLngsYHgsKHgsYEnIOCwjuCwteCwsOCxgT8iLCAibyI6IFsi4LC54LGL4LCu4LGAIOCwnOCxhi4g4LCt4LC+4LCt4LC+IiwgIuCwuOCwpOCxgOCwt+CxjSDgsKfgsLXgsKjgsY0iLCAi4LC44LC/LuCwteCwvy4g4LCw4LC+4LCu4LCo4LGNIiwgIuCwteCwv+CwleCxjeCwsOCwruCxjSDgsLjgsL7gsLDgsL7gsK3gsL7gsK/gsY0iXX0sICJhIjogM30sIHsiaWQiOiAiU0dULUIwMy0xMDUiLCAicGFydCI6ICJHSyIsICJ0b3BpYyI6ICJTcG9ydHMiLCAiZW4iOiB7InEiOiAiSW5kaWEgd29uIHRoZSBJQ0MgTWVuJ3MgVDIwIFdvcmxkIEN1cCBpbiBKdW5lIDIwMjQgYnkgZGVmZWF0aW5nOiIsICJvIjogWyJBdXN0cmFsaWEiLCAiU291dGggQWZyaWNhIiwgIlBha2lzdGFuIiwgIkVuZ2xhbmQiXX0sICJ0ZSI6IHsicSI6ICIyMDI0IOCwnOCxguCwqOCxjeKAjOCwsuCxiyDgsJDgsLjgsYDgsLjgsYAg4LCq4LGB4LCw4LGB4LC34LGB4LCyIOCwn+CxgDIwIOCwquCxjeCwsOCwquCwguCwmiDgsJXgsKrgsY3igIzgsKjgsYEg4LCt4LC+4LCw4LCk4LGNIOCwjyDgsJzgsJ/gsY3gsJ/gsYHgsKjgsYEg4LCT4LCh4LC/4LCC4LCa4LC/IOCwl+CxhuCwsuCwv+CwmuCwv+CwguCwpuCwvz8iLCAibyI6IFsi4LCG4LC44LGN4LCf4LGN4LCw4LGH4LCy4LC/4LCv4LC+IiwgIuCwpuCwleCxjeCwt+Cwv+Cwo+CwvuCwq+CxjeCwsOCwv+CwleCwviIsICLgsKrgsL7gsJXgsL/gsLjgsY3gsKTgsL7gsKjgsY0iLCAi4LCH4LCC4LCX4LGN4LCy4LCC4LCh4LGNIl19LCAiYSI6IDF9LCB7ImlkIjogIlNHVC1CMDMtMTAxIiwgInBhcnQiOiAiR0siLCAidG9waWMiOiAiSW1wb3J0YW50IERheXMiLCAiZW4iOiB7InEiOiAiVW5pdGVkIE5hdGlvbnMgRGF5IGlzIG9ic2VydmVkIG9uOiIsICJvIjogWyIxMCBEZWNlbWJlciIsICI1IEp1bmUiLCAiMSBEZWNlbWJlciIsICIyNCBPY3RvYmVyIl19LCAidGUiOiB7InEiOiAi4LCQ4LCV4LGN4LCv4LCw4LC+4LCc4LGN4LCvIOCwuOCwruCwv+CwpOCwvyDgsKbgsL/gsKjgsYvgsKTgsY3gsLjgsLXgsIIg4LCO4LCq4LGN4LCq4LGB4LCh4LGBPyIsICJvIjogWyLgsKHgsL/gsLjgsYbgsILgsKzgsLDgsYEgMTAiLCAi4LCc4LGC4LCo4LGNIDUiLCAi4LCh4LC/4LC44LGG4LCC4LCs4LCw4LGBIDEiLCAi4LCF4LCV4LGN4LCf4LGL4LCs4LCw4LGBIDI0Il19LCAiYSI6IDN9LCB7ImlkIjogIlNHVC1CMDMtMDkyIiwgInBhcnQiOiAiR0siLCAidG9waWMiOiAiU2NpZW5jZSAmIFRlY2hub2xvZ3kiLCAiZW4iOiB7InEiOiAiVGhlIGhlYWRxdWFydGVycyBvZiBJU1JPIGlzIGluOiIsICJvIjogWyJIeWRlcmFiYWQiLCAiU3JpaGFyaWtvdGEiLCAiVGhpcnV2YW5hbnRoYXB1cmFtIiwgIkJlbmdhbHVydSJdfSwgInRlIjogeyJxIjogIuCwh+CwuOCxjeCwsOCxiyAoSVNSTykg4LCq4LGN4LCw4LCn4LC+4LCoIOCwleCwvuCwsOCxjeCwr+CwvuCwsuCwr+CwgjoiLCAibyI6IFsi4LC54LGI4LCm4LCw4LC+4LCs4LC+4LCm4LGBIiwgIuCwtuCxjeCwsOCxgOCwueCwsOCwv+CwleCxi+CwnyIsICLgsKTgsL/gsLDgsYHgsLXgsKjgsILgsKTgsKrgsYHgsLDgsIIiLCAi4LCs4LGG4LCC4LCX4LCz4LGC4LCw4LGBIl19LCAiYSI6IDN9LCB7ImlkIjogIlNHVC1CMDMtMTAwIiwgInBhcnQiOiAiR0siLCAidG9waWMiOiAiSW1wb3J0YW50IERheXMiLCAiZW4iOiB7InEiOiAiSW50ZXJuYXRpb25hbCBZb2dhIERheSBpcyBvYnNlcnZlZCBvbjoiLCAibyI6IFsiMTAgRGVjZW1iZXIiLCAiNSBKdW5lIiwgIjggTWFyY2giLCAiMjEgSnVuZSJdfSwgInRlIjogeyJxIjogIuCwheCwguCwpOCwsOCxjeCwnOCwvuCwpOCxgOCwryDgsK/gsYvgsJfgsL4g4LCm4LC/4LCo4LGL4LCk4LGN4LC44LC14LCCIOCwjuCwquCxjeCwquCxgeCwoeCxgT8iLCAibyI6IFsi4LCh4LC/4LC44LGG4LCC4LCs4LCw4LGBIDEwIiwgIuCwnOCxguCwqOCxjSA1IiwgIuCwruCwvuCwsOCxjeCwmuCwvyA4IiwgIuCwnOCxguCwqOCxjSAyMSJdfSwgImEiOiAzfSwgeyJpZCI6ICJTR1QtQjAzLTEwMiIsICJwYXJ0IjogIkdLIiwgInRvcGljIjogIlNwb3J0cyIsICJlbiI6IHsicSI6ICJUaGUgMjAyNCBTdW1tZXIgT2x5bXBpY3Mgd2VyZSBob3N0ZWQgYnk6IiwgIm8iOiBbIlRva3lvIiwgIlJpbyBkZSBKYW5laXJvIiwgIlBhcmlzIiwgIkxvcyBBbmdlbGVzIl19LCAidGUiOiB7InEiOiAiMjAyNCDgsLXgsYfgsLjgsLXgsL8g4LCS4LCy4LC/4LCC4LCq4LC/4LCV4LGN4LC44LGN4oCM4LCV4LGBIOCwhuCwpOCwv+CwpeCxjeCwr+CwruCwv+CwmuCxjeCwmuCwv+CwqCDgsKjgsJfgsLDgsII6IiwgIm8iOiBbIuCwn+Cxi+CwleCxjeCwr+CxiyIsICLgsLDgsL/gsK/gsYsg4LCh4LC/IOCwnOCwqOCxgOCwsOCxiyIsICLgsKrgsL7gsLDgsL/gsLjgsY0iLCAi4LCy4LC+4LC44LGNIOCwj+CwguCwnOCxhuCwsuCxhuCwuOCxjSJdfSwgImEiOiAyfSwgeyJpZCI6ICJTR1QtQjAzLTA5NSIsICJwYXJ0IjogIkdLIiwgInRvcGljIjogIkltcG9ydGFudCBEYXlzIiwgImVuIjogeyJxIjogIlRlYWNoZXJzJyBEYXkgaW4gSW5kaWEgKDUgU2VwdGVtYmVyKSBpcyBvYnNlcnZlZCBvbiB0aGUgYmlydGggYW5uaXZlcnNhcnkgb2Y6IiwgIm8iOiBbIkRyLiBBLlAuSi4gQWJkdWwgS2FsYW0iLCAiRHIuIFNhcnZlcGFsbGkgUmFkaGFrcmlzaG5hbiIsICJNYXVsYW5hIEFidWwgS2FsYW0gQXphZCIsICJKYXdhaGFybGFsIE5laHJ1Il19LCAidGUiOiB7InEiOiAi4LCt4LC+4LCw4LCk4LCm4LGH4LC24LCC4LCy4LGLIOCwieCwquCwvuCwp+CxjeCwr+CwvuCwryDgsKbgsL/gsKjgsYvgsKTgsY3gsLjgsLXgsIIgKOCwuOCxhuCwquCxjeCwn+CxhuCwguCwrOCwsOCxgSA1KSDgsI7gsLXgsLDgsL8g4LCc4LCv4LCC4LCk4LC/PyIsICJvIjogWyLgsKHgsL4uIOCwji7gsKrgsL8u4LCc4LGGLiDgsIXgsKzgsY3gsKbgsYHgsLLgsY0g4LCV4LCy4LC+4LCCIiwgIuCwoeCwvi4g4LC44LCw4LGN4LC14LGH4LCq4LCy4LGN4LCy4LC/IOCwsOCwvuCwp+CwvuCwleCxg+Cwt+CxjeCwo+CwqOCxjSIsICLgsK7gsYzgsLLgsL7gsKjgsL4g4LCF4LCs4LGB4LCy4LGNIOCwleCwsuCwvuCwgiDgsIbgsJzgsL7gsKbgsY0iLCAi4LCc4LC14LC54LCw4LGN4oCM4LCy4LC+4LCy4LGNIOCwqOCxhuCwueCxjeCwsOCxgiJdfSwgImEiOiAxfSwgeyJpZCI6ICJTR1QtQjAzLTA5NyIsICJwYXJ0IjogIkdLIiwgInRvcGljIjogIkltcG9ydGFudCBEYXlzIiwgImVuIjogeyJxIjogIk5hdGlvbmFsIFNjaWVuY2UgRGF5ICgyOCBGZWJydWFyeSkgY29tbWVtb3JhdGVzIHRoZSBkaXNjb3Zlcnkgb2YgdGhlOiIsICJvIjogWyJUaGVvcnkgb2YgcmVsYXRpdml0eSIsICJSYW1hbiBFZmZlY3QiLCAiUGVuaWNpbGxpbiIsICJSYWRpb2FjdGl2aXR5Il19LCAidGUiOiB7InEiOiAi4LCc4LC+4LCk4LGA4LCvIOCwuOCxiOCwqOCxjeCwuOCxjSDgsKbgsL/gsKjgsYvgsKTgsY3gsLjgsLXgsIIgKOCwq+Cwv+CwrOCxjeCwsOCwteCwsOCwvyAyOCkg4LCm4LGH4LCo4LC/IOCwhuCwteCwv+Cwt+CxjeCwleCwsOCwo+CwqOCxgSDgsLjgsY3gsK7gsLDgsL/gsLjgsY3gsKTgsYHgsILgsKbgsL8/IiwgIm8iOiBbIuCwuOCwvuCwquCxh+CwleCxjeCwt+CwpOCwviDgsLjgsL/gsKbgsY3gsKfgsL7gsILgsKTgsIIiLCAi4LCw4LC+4LCu4LCo4LGNIOCwquCxjeCwsOCwreCwvuCwteCwgiIsICLgsKrgsYbgsKjgsY3gsLjgsL/gsLLgsL/gsKjgsY0iLCAi4LCw4LGH4LCh4LC/4LCv4LGL4LCn4LC+4LCw4LGN4LCu4LC/4LCV4LCkIl19LCAiYSI6IDF9LCB7ImlkIjogIlNHVC1CMDMtMDk0IiwgInBhcnQiOiAiR0siLCAidG9waWMiOiAiSW1wb3J0YW50IERheXMiLCAiZW4iOiB7InEiOiAiTmF0aW9uYWwgRWR1Y2F0aW9uIERheSAoMTEgTm92ZW1iZXIpIG1hcmtzIHRoZSBiaXJ0aCBhbm5pdmVyc2FyeSBvZjoiLCAibyI6IFsiRHIuIFMuIFJhZGhha3Jpc2huYW4iLCAiTWF1bGFuYSBBYnVsIEthbGFtIEF6YWQiLCAiSmF3YWhhcmxhbCBOZWhydSIsICJEci4gQi5SLiBBbWJlZGthciJdfSwgInRlIjogeyJxIjogIuCwnOCwvuCwpOCxgOCwryDgsLXgsL/gsKbgsY3gsK/gsL4g4LCm4LC/4LCo4LGL4LCk4LGN4LC44LC14LCCICjgsKjgsLXgsILgsKzgsLDgsYEgMTEpIOCwjuCwteCwsOCwvyDgsJzgsK/gsILgsKTgsL8/IiwgIm8iOiBbIuCwoeCwvi4g4LCO4LC44LGNLiDgsLDgsL7gsKfgsL7gsJXgsYPgsLfgsY3gsKPgsKjgsY0iLCAi4LCu4LGM4LCy4LC+4LCo4LC+IOCwheCwrOCxgeCwsuCxjSDgsJXgsLLgsL7gsIIg4LCG4LCc4LC+4LCm4LGNIiwgIuCwnOCwteCwueCwsOCxjeKAjOCwsuCwvuCwsuCxjSDgsKjgsYbgsLngsY3gsLDgsYIiLCAi4LCh4LC+LiDgsKzgsL8u4LCG4LCw4LGNLiDgsIXgsILgsKzgsYfgsKbgsY3gsJXgsLDgsY0iXX0sICJhIjogMX0sIHsiaWQiOiAiU0dULUIwMy0wOTAiLCAicGFydCI6ICJHSyIsICJ0b3BpYyI6ICJTY2llbmNlICYgVGVjaG5vbG9neSIsICJlbiI6IHsicSI6ICJDaGFuZHJheWFhbi0zIChBdWd1c3QgMjAyMykgbWFkZSBJbmRpYSB0aGUgZmlyc3QgY291bnRyeSB0byBsYW5kIG5lYXIgdGhlIE1vb24nczoiLCAibyI6IFsiRmFyIHNpZGUgY2VudHJlIiwgIk5vcnRoIHBvbGUiLCAiU291dGggcG9sZSIsICJFcXVhdG9yIl19LCAidGUiOiB7InEiOiAi4LCa4LCC4LCm4LGN4LCw4LCv4LC+4LCo4LGNLTMgKDIwMjMg4LCG4LCX4LC44LGN4LCf4LGBKSDgsKbgsY3gsLXgsL7gsLDgsL4g4LCa4LCC4LCm4LGN4LCw4LGB4LCo4LC/IOCwjyDgsKrgsY3gsLDgsL7gsILgsKTgsIIg4LC44LCu4LGA4LCq4LCC4LCy4LGLIOCwpuCwv+Cwl+Cwv+CwqCDgsK7gsYrgsKbgsJ/gsL8g4LCm4LGH4LC24LCC4LCX4LC+IOCwreCwvuCwsOCwpOCxjSDgsKjgsL/gsLLgsL/gsJrgsL/gsILgsKbgsL8/IiwgIm8iOiBbIuCwheCwteCwpOCwsuCwvyDgsLXgsYjgsKrgsYEg4LCV4LGH4LCC4LCm4LGN4LCw4LCCIiwgIuCwieCwpOCxjeCwpOCwsCDgsKfgsY3gsLDgsYHgsLXgsIIiLCAi4LCm4LCV4LGN4LC34LC/4LCjIOCwp+CxjeCwsOCxgeCwteCwgiIsICLgsK3gsYLgsK7gsKfgsY3gsK8g4LCw4LGH4LCWIl19LCAiYSI6IDJ9LCB7ImlkIjogIlNHVC1CMDMtMDk2IiwgInBhcnQiOiAiR0siLCAidG9waWMiOiAiSW1wb3J0YW50IERheXMiLCAiZW4iOiB7InEiOiAiV29ybGQgVGVhY2hlcnMnIERheSBpcyBvYnNlcnZlZCBldmVyeSB5ZWFyIG9uOiIsICJvIjogWyIyNCBKYW51YXJ5IiwgIjExIE5vdmVtYmVyIiwgIjUgU2VwdGVtYmVyIiwgIjUgT2N0b2JlciJdfSwgInRlIjogeyJxIjogIuCwquCxjeCwsOCwquCwguCwmiDgsIngsKrgsL7gsKfgsY3gsK/gsL7gsK8g4LCm4LC/4LCo4LGL4LCk4LGN4LC44LC14LCCIOCwquCxjeCwsOCwpOCwvyDgsLjgsILgsLXgsKTgsY3gsLjgsLDgsIIg4LCO4LCq4LGN4LCq4LGB4LCh4LGBIOCwnOCwsOCxgeCwquCxgeCwleCxgeCwguCwn+CwvuCwsOCxgT8iLCAibyI6IFsi4LCc4LCo4LC14LCw4LC/IDI0IiwgIuCwqOCwteCwguCwrOCwsOCxgSAxMSIsICLgsLjgsYbgsKrgsY3gsJ/gsYbgsILgsKzgsLDgsYEgNSIsICLgsIXgsJXgsY3gsJ/gsYvgsKzgsLDgsYEgNSJdfSwgImEiOiAzfV0="), function(c){return c.charCodeAt(0);}))); }catch(e){ Q=[]; }
+var DISTRICTS = ["Alluri Sitharama Raju","Anakapalli","Ananthapuramu","Annamayya","Bapatla","Chittoor","Dr. B.R. Ambedkar Konaseema","East Godavari","Eluru","Guntur","Kakinada","Krishna","Kurnool","Markapuram","Nandyal","NTR","Palnadu","Parvathipuram Manyam","Polavaram","Prakasam","Sri Potti Sriramulu Nellore","Sri Sathya Sai","Srikakulam","Tirupati","Visakhapatnam","Vizianagaram","West Godavari","YSR Kadapa","Other / Outside AP"];
+var L = "ABCD";
+var $ = function(id){return document.getElementById(id);};
+function ld(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function sv(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function rm(k){try{localStorage.removeItem(k);}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function hasURL(){return CFG.SCRIPT_URL && /^https:\/\/script\.google\.com\//.test(CFG.SCRIPT_URL);}
+function keyOf(n,d){return (n||"").trim().toLowerCase().replace(/\s+/g," ")+"|"+(d||"").trim().toLowerCase();}
+var SK = "sess:"+CFG.TEST_ID;
+var S = null, timer = null;
+
+var ds = $("ds");
+ds.innerHTML = '<option value="">— Select district —</option>' + DISTRICTS.map(function(d){return '<option>'+esc(d)+'</option>';}).join("");
+
+function msg(t,cls){var m=$("smsg");m.className="msg "+(cls||"err");m.textContent=t;}
+function uid(){return "a"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);}
+
+function windowCheck(){
+  var now=Date.now();
+  if(CFG.START_AT && now<new Date(CFG.START_AT).getTime()) return "This test opens on "+new Date(CFG.START_AT).toLocaleString();
+  if(CFG.END_AT && now>new Date(CFG.END_AT).getTime()) return "This test has closed.";
+  return "";
+}
+
+$("goBtn").onclick = function(){
+  var name=$("nm").value.trim(), dist=ds.value;
+  if(name.length<3){msg("Please enter your full name.");return;}
+  if(!dist){msg("Please select your district.");return;}
+  var w=windowCheck(); if(w){msg(w);return;}
+  var lang=(document.querySelector('input[name=lg]:checked')||{}).value||"both";
+  sv("last", JSON.stringify({n:name,d:dist,l:lang}));
+  S={name:name,district:dist,lang:lang,aid:uid(),t0:Date.now(),resp:{},done:false};
+  save(); begin();
+};
+
+function save(){ if(S) sv(SK, JSON.stringify(S)); }
+
+function begin(){
+  $("start").classList.add("hide"); $("test").classList.remove("hide");
+  setLang(S.lang,true);
+  buildQs(); paintAll(); updateProg(); tick();
+  if(timer) clearInterval(timer);
+  timer=setInterval(tick,1000);
+  window.scrollTo(0,0);
+}
+
+function remaining(){ return CFG.DURATION_MIN*60 - Math.floor((Date.now()-S.t0)/1000); }
+function fmt(s){ s=Math.max(0,s); var m=Math.floor(s/60), x=s%60; return (m<10?"0":"")+m+":"+(x<10?"0":"")+x; }
+function tick(){
+  if(!S||S.done) return;
+  var r=remaining(); var t=$("tm"); t.textContent=fmt(r); t.classList.toggle("low",r<=60);
+  if(r<=0){ finish(true); }
+}
+
+function setLang(l,silent){
+  S.lang=l;
+  var bs=$("lgBar").querySelectorAll("button");
+  for(var i=0;i<bs.length;i++) bs[i].classList.toggle("on",bs[i].getAttribute("data-l")===l);
+  if(!silent){ save(); buildQs(); paintAll(); }
+}
+$("lgBar").onclick=function(e){ var l=e.target.getAttribute&&e.target.getAttribute("data-l"); if(l&&S) setLang(l); };
+
+function buildQs(){
+  var h="";
+  Q.forEach(function(q,i){
+    h+='<div class="q" id="q'+i+'"><div class="meta"><span>Q'+(i+1)+' / '+Q.length+' • '+esc(q.topic)+'</span><span class="st" id="st'+i+'"></span></div>';
+    if(S.lang!=="te") h+='<p class="qt">'+esc(q.en.q)+'</p>';
+    if(S.lang!=="en") h+='<p class="qt te">'+esc(q.te.q)+'</p>';
+    h+='<div class="opts">';
+    for(var j=0;j<4;j++){
+      h+='<button class="opt" data-i="'+i+'" data-j="'+j+'"><span class="k">'+L[j]+'.</span><span class="tx">';
+      if(S.lang!=="te") h+='<span class="en">'+esc(q.en.o[j])+'</span>';
+      if(S.lang!=="en") h+='<span class="te">'+esc(q.te.o[j])+'</span>';
+      h+='</span><span class="ic"></span></button>';
+    }
+    h+='</div><div class="fb" id="fb'+i+'"></div></div>';
+  });
+  $("qs").innerHTML=h;
+}
+
+$("qs").onclick=function(e){
+  var b=e.target.closest?e.target.closest(".opt"):null;
+  if(!b||!S||S.done) return;
+  var i=+b.getAttribute("data-i"), j=+b.getAttribute("data-j");
+  if(S.resp[i]!==undefined) return;
+  S.resp[i]=j; save(); paint(i); updateProg();
+};
+
+function paint(i){
+  var card=$("q"+i); if(!card) return;
+  var q=Q[i], sel=S.resp[i], a=q.a, ans=(sel!==undefined);
+  var opts=card.querySelectorAll(".opt");
+  for(var j=0;j<opts.length;j++){
+    var o=opts[j]; o.classList.remove("ok","bad"); var ic=o.querySelector(".ic"); ic.textContent="";
+    if(ans||S.done){
+      if(j===a){ o.classList.add("ok"); ic.textContent="✓"; }
+      else if(j===sel){ o.classList.add("bad"); ic.textContent="✗"; }
+    }
+  }
+  card.classList.toggle("locked",ans||S.done);
+  var fb=$("fb"+i), st=$("st"+i);
+  if(ans){
+    if(sel===a){ fb.className="fb ok"; fb.textContent="Correct ✓ / సరైనది"; st.textContent="✓"; }
+    else { fb.className="fb bad"; fb.textContent="Wrong ✗ / తప్పు — Correct answer: "+L[a]; st.textContent="✗"; }
+  } else if(S.done){ fb.className="fb skip"; fb.textContent="Not answered / సమాధానం ఇవ్వలేదు — Correct answer: "+L[a]; st.textContent="–"; }
+  else { fb.textContent=""; st.textContent=""; }
+}
+function paintAll(){ for(var i=0;i<Q.length;i++) paint(i); }
+function updateProg(){ $("pg").textContent=Object.keys(S.resp).length+"/"+Q.length+" answered"; }
+
+function modal(txt,yes,yesLabel){
+  $("mtxt").innerHTML=txt; $("mYes").textContent=yesLabel||"OK";
+  $("modal").style.display="flex";
+  $("mYes").onclick=function(){ $("modal").style.display="none"; yes&&yes(); };
+  $("mNo").onclick=function(){ $("modal").style.display="none"; };
+}
+$("subBtn").onclick=function(){
+  if(!S||S.done) return;
+  var left=Q.length-Object.keys(S.resp).length;
+  modal("<b>Submit the test?</b><br>"+(left?left+" question(s) not answered.":"All questions answered."),function(){finish(false);},"Submit");
+};
+
+function compute(){
+  var sc=0, by={};
+  Q.forEach(function(q,i){
+    var t=q.topic; by[t]=by[t]||{c:0,n:0}; by[t].n++;
+    if(S.resp[i]===q.a){ sc++; by[t].c++; }
+  });
+  return {score:sc,by:by};
+}
+
+function finish(auto){
+  if(!S||S.done) return;
+  S.done=true; S.tEnd=Date.now(); save();
+  if(timer) clearInterval(timer);
+  var r=compute(), used=Math.min(CFG.DURATION_MIN*60, Math.floor((S.tEnd-S.t0)/1000));
+  var pct=Math.round(r.score*1000/Q.length)/10;
+  rm(SK);
+  var detail=Object.keys(r.by).map(function(k){return k+": "+r.by[k].c+"/"+r.by[k].n;}).join(" | ");
+  var payload={testId:CFG.TEST_ID,title:CFG.TITLE,name:S.name,district:S.district,score:r.score,total:Q.length,percent:pct,timeSec:used,detail:detail,aid:S.aid,credit:CFG.CREDIT};
+  postScore(payload,0);
+  $("subBtn").classList.add("hide"); $("lgBar").classList.add("hide");
+  $("tm").textContent="Finished"; $("tm").classList.remove("low");
+  paintAll();
+  var wrong=0, skipped=0;
+  Q.forEach(function(q,i){ if(S.resp[i]===undefined) skipped++; else if(S.resp[i]!==q.a) wrong++; });
+  var h='<div class="card"><p class="note" style="margin:0">'+(auto?"Time is up — test submitted automatically.":"Test submitted.")+'</p>'+
+    '<p class="score">'+r.score+' / '+Q.length+' <span style="font-size:18px;font-weight:700;color:var(--mute)">('+pct+'%)</span></p>'+
+    '<div class="note">'+esc(S.name)+' • '+esc(S.district)+'</div>'+
+    '<div class="grid"><div class="stat"><b style="color:var(--ok)">'+r.score+'</b>Correct</div><div class="stat"><b style="color:var(--bad)">'+wrong+'</b>Wrong</div><div class="stat"><b>'+skipped+'</b>Not answered</div><div class="stat"><b>'+fmt(used)+'</b>Time used</div></div>'+
+    '<table><tr><th>Topic</th><th>Score</th></tr>'+Object.keys(r.by).map(function(k){return '<tr><td>'+esc(k)+'</td><td>'+r.by[k].c+' / '+r.by[k].n+'</td></tr>';}).join("")+'</table>'+
+    '<p style="margin:12px 0 0"><button class="btn" id="again">Attempt again</button></p><p class="note" id="sentNote" style="margin:10px 0 0">'+(hasURL()?"Saving your score…":"Score tracking is not connected for this copy.")+'</p></div>'+
+    '<div class="card"><b>Leaderboard</b><div id="lb" class="note">'+(hasURL()?"Loading…":"—")+'</div></div>'+
+    '<div class="card"><b>Review of your responses</b><div class="note">Your answers are shown below: ✓ green = correct answer, ✗ red = your wrong choice.</div></div>';
+  $("result").innerHTML=h; $("result").classList.remove("hide");
+  $("again").onclick=function(){ location.reload(); };
+  window.scrollTo(0,0);
+  if(hasURL()) setTimeout(loadLB,2500);
+}
+
+function postScore(p,n){
+  if(!hasURL()) return;
+  fetch(CFG.SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)})
+   .then(function(){ var el=$("sentNote"); if(el) el.textContent="Score saved ✓"; })
+   .catch(function(){ if(n<2) setTimeout(function(){postScore(p,n+1);},2500); else { var el=$("sentNote"); if(el) el.textContent="Could not save your score (network)."; } });
+}
+function loadLB(){
+  fetch(CFG.SCRIPT_URL+"?action=lb&testId="+encodeURIComponent(CFG.TEST_ID))
+   .then(function(r){return r.json();})
+   .then(function(j){
+     var el=$("lb"); if(!el) return;
+     if(!j||!j.rows||!j.rows.length){ el.textContent="No scores yet."; return; }
+     el.innerHTML='<table><tr><th>#</th><th>Name</th><th>District</th><th>Score</th></tr>'+j.rows.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td>'+esc(r.name)+'</td><td>'+esc(r.district)+'</td><td>'+r.score+'/'+r.total+'</td></tr>';}).join("")+'</table>';
+   }).catch(function(){ var el=$("lb"); if(el) el.textContent="Leaderboard unavailable."; });
+}
+
+// prefill last used name / district
+try{ var lastU=JSON.parse(ld("last")||"null"); if(lastU){ $("nm").value=lastU.n||""; ds.value=lastU.d||""; var rr=document.querySelector('input[name=lg][value="'+(lastU.l||"both")+'"]'); if(rr) rr.checked=true; } }catch(e){}
+// resume after refresh
+(function(){
+  var raw=ld(SK);
+  if(raw){ try{ var s=JSON.parse(raw); if(s&&!s.done){ S=s; if(remaining()<=0){ begin(); finish(true); } else begin(); } }catch(e){} }
+})();
+})();
+</script>
+</body>
+</html>
